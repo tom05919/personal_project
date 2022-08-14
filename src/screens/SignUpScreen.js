@@ -4,7 +4,8 @@ import Logo from '../../assets/images/Logo.png'
 import CustomInput from '../components/CustomInput'
 import CustomButton from '../components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
-
+import { auth, analytics } from '../firebase'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 
 const LoginScreen = () => {
@@ -14,18 +15,34 @@ const LoginScreen = () => {
   const eye = require('../../assets/images/eye.png')
   const navigation = useNavigation();
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+        if (user) {
+            navigation.replace("Home");
+        }
+    })
+
+    return unsubscribe
+}, [])
+
 
   const onSignUpPressed = () => {
-    console.warn('Sign Up');
+    createUserWithEmailAndPassword(auth, email, password)
+        .then(userCerdentials => {
+            const user = userCerdentials.user
+            console.log(user.email)
+        })
+        .catch(error => alert(error.message))
+
     navigation.navigate('Home')
   };
 
   const onoLoginWithGoogle = () => {
     console.warn('sign in with google');
+    //firbase stuff
   };
 
   const onLoginPressed = () => {
-    console.warn('log in');
     navigation.navigate('Login')
   }
 

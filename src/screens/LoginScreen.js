@@ -1,9 +1,11 @@
 import { View, Text, Image, StyleSheet, useWindowDimensions, Pressable, ScrollView } from 'react-native'
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import Logo from '../../assets/images/Logo.png'
 import CustomInput from '../components/CustomInput'
 import CustomButton from '../components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
+import { auth } from '../firebase'
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 
 const LoginScreen = () => {
@@ -13,19 +15,33 @@ const LoginScreen = () => {
   const navigation = useNavigation();
   const eye = require('../../assets/images/eye.png')
 
-  const onLoginPressed = () => {
-    console.warn('login');
-    navigation.navigate('Home')
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+        if (user) {
+            navigation.replace("Home");
+        }
+    })
+
+    return unsubscribe
+  }, [])
+
+  const onLoginPressed = () => {    
+    signInWithEmailAndPassword(auth, email, password)
+        .then(userCerdentials => {
+            const user = userCerdentials.user
+            console.log(user.email)
+        })
+        .catch(error => alert(error.message))
   };
 
   const onMakeNewAcc = () => {
-    console.warn('make new account');
     navigation.navigate('SignUp')
   };
 
-  const onoLoginWithGoogle = () => {
-    console.warn('sign in with google');
-  };
+  // const onoLoginWithGoogle = () => {
+  //   console.warn('sign in with google');
+  //   signInWithRedirect(auth, provider);
+  // };
 
   return (
     <ScrollView>
@@ -46,12 +62,12 @@ const LoginScreen = () => {
           text='Login' 
           onPress={onLoginPressed} 
         />
-        <CustomButton 
+        {/* <CustomButton 
           text='Login with Google' 
           onPress={onoLoginWithGoogle}
           frontColor='#27E63E'
           backColor='#C7F3CC'
-        />
+        /> */}
         <CustomButton 
           text='Make a new account' 
           onPress={onMakeNewAcc} 
