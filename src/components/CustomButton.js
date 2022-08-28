@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#346fed',
     },
     button_secondary: {
-
+        
     },
     text_primary: {
         fontWeight: 'bold',

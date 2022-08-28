@@ -1,6 +1,5 @@
 import { View, Text, Image, StyleSheet, useWindowDimensions, Pressable, ScrollView } from 'react-native'
-import React, {useState} from 'react'
-import Logo from '../../assets/images/Logo.png'
+import React, { useState, useEffect } from 'react'
 import CustomInput from '../components/CustomInput'
 import CustomButton from '../components/CustomButton'
 import { useNavigation } from '@react-navigation/native'
@@ -64,12 +63,6 @@ const LoginScreen = () => {
         <CustomButton 
           text='Sign Up' 
           onPress={onSignUpPressed} 
-        />
-        <CustomButton 
-          text='Login with Google' 
-          onPress={onoLoginWithGoogle}
-          frontColor='#27E63E'
-          backColor='#C7F3CC'
         />
         <CustomButton 
           text='Already have an account? Login' 
