@@ -37,7 +37,7 @@ const HomeScreen = () => {
       <View style={styles.body}>
         {
           todoItems.map((todo, index) => {
-            return <CustomTodo key={index} text={todo} onPress={completeTodo}/>
+            return <CustomTodo key={index} text={todo} onPress={() => completeTodo(index)}/>
           })
         }
       </View>
