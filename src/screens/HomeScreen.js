@@ -30,18 +30,19 @@ const HomeScreen = () => {
     setTodoItems(todoCopy);
   }
 
-
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Todo List:</Text>
-      <View style={styles.body}>
-        {
-          todoItems.map((todo, index) => {
-            return <CustomTodo key={index} text={todo} onPress={() => completeTodo(index)}/>
-          })
-        }
-      </View>
-
+      <ScrollView>
+        <Text style={styles.header}>Todo List:</Text>
+        <View style={styles.body}>
+          {
+            todoItems.map((todo, index) => {
+              return <CustomTodo key={index} text={todo} onPress={() => completeTodo(index)}/>
+            })
+          }
+        </View>      
+        {/* <CustomButton text='Logout' onPress={signOut}/> */}
+      </ScrollView>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskContainer}
@@ -58,12 +59,12 @@ const HomeScreen = () => {
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
-
       {/* <CustomButton text='Logout' onPress={signOut}/> */}
     </View>
   
   )
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -107,6 +108,5 @@ const styles = StyleSheet.create({
     fontSize: 30,
   }
 })
-
 
 export default HomeScreen

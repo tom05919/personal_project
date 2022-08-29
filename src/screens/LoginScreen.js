@@ -13,7 +13,6 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('');
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
-  const eye = require('../../assets/images/eye.png')
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {

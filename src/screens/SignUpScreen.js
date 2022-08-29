@@ -11,7 +11,6 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const {height} = useWindowDimensions();
-  const eye = require('../../assets/images/eye.png')
   const navigation = useNavigation();
 
   useEffect(() => {
