@@ -48,14 +48,14 @@ const HomeScreen = () => {
         style={styles.writeTaskContainer}
       >
         <TextInput
-        placeholder={'Write something'}
-        style={styles.input}
-        value={todo}
-        onChangeText={text => setTodo(text)}
+          placeholder={'Write something'}
+          style={styles.input}
+          value={todo}
+          onChangeText={text => setTodo(text)}
         />
         <TouchableOpacity onPress={handleAddTask} >
           <View style={styles.add}>
-            <Text style={styles.addButton}>+</Text>
+            <Text style={styles.buttonText}>+</Text>
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 20,
     justifyContent: 'space-around',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   input: {
     backgroundColor: 'white',
@@ -102,9 +102,10 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     alignItems: 'center',
     justifyContent: 'center',
-    height: 60,
+    height: 50,
+    marginTop: 20,
   },
-  addButton: {
+  buttonText: {
     fontSize: 30,
   }
 })
