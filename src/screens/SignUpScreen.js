@@ -21,7 +21,7 @@ const LoginScreen = () => {
     })
 
     return unsubscribe
-}, [])
+  }, [])
 
 
   const onSignUpPressed = () => {
