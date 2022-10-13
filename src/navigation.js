@@ -12,6 +12,7 @@ import FlashcardScreen from './screens/FlashcardScreen';
 import homeIcon from '../assets/images/homeIcon.png';
 import calendarIcon from '../assets/images/calendarIcon.png';
 import timerIcon from '../assets/images/timerIcon.png';
+import GameScreen from './screens/GameScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -40,10 +41,6 @@ const Home = () => {
           tabBarIcon: () => (<Image source={timerIcon} style={styles.icon}/>)
         }}
       />
-      <Tab.Screen
-        name='Flashcards'
-        component={FlashcardScreen}
-    </Tab.Navigator>
   );
 }
 
