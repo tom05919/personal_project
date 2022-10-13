@@ -1,9 +1,7 @@
 import React from 'react'
 
-export default function CustomFlashcard({ flashcard }) {
+export default function CustomFlashcard() {
   return (
-    <div>
-        {flashcard.question}       
-        </div>
+    <div>CustomFlashcard</div>
   )
 }
