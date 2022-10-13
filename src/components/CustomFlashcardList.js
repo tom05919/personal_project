@@ -1,13 +1,8 @@
 import React from 'react'
-import CustomFlashcard from './CustomFlashcard'
 
-export default function CustomFlashcardList( {flashcards} ) {
+export default function CustomFlashcardList() {
   return (
-    <div className="card-grid">
-        {flashcards.map(flashcard => {
-            return <CustomFlashcard flashcard={flashcard} key={flashcard.id} />
-        })}
-        </div>
+    <div>CustomFlashcardList</div>
   )
 }
 
