@@ -8,6 +8,7 @@ import SignUpScreen from './screens/SignUpScreen';
 import HomeScreen from './screens/HomeScreen';
 import CalendarScreen from './screens/CalendarScreen';
 import TimerScreen from './screens/TimerScreen';
+import FlashcardScreen from './screens/FlashcardScreen';
 import homeIcon from '../assets/images/homeIcon.png';
 import calendarIcon from '../assets/images/calendarIcon.png';
 import timerIcon from '../assets/images/timerIcon.png';
@@ -39,6 +40,9 @@ const Home = () => {
           tabBarIcon: () => (<Image source={timerIcon} style={styles.icon}/>)
         }}
       />
+      <Tab.Screen
+        name='Flashcards'
+        component={FlashcardScreen}
     </Tab.Navigator>
   );
 }
