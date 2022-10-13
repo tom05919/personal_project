@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, useColorScheme, View } from 'react-native';
 import Navigation from './src/navigation';
 
