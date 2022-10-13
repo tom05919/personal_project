@@ -11,6 +11,7 @@ import TimerScreen from './screens/TimerScreen';
 import homeIcon from '../assets/images/homeIcon.png';
 import calendarIcon from '../assets/images/calendarIcon.png';
 import timerIcon from '../assets/images/timerIcon.png';
+import GameScreen from './screens/GameScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -35,6 +36,13 @@ const Home = () => {
       <Tab.Screen 
         name='Timer' 
         component={TimerScreen}
+        options={{
+          tabBarIcon: () => (<Image source={timerIcon} style={styles.icon}/>)
+        }}
+      />
+      <Tab.Screen 
+        name='Game' 
+        component={GameScreen}
         options={{
           tabBarIcon: () => (<Image source={timerIcon} style={styles.icon}/>)
         }}
