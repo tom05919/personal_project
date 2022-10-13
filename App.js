@@ -10,15 +10,6 @@ const App = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ededed'
-  },
-});
-
-export default App;
-
 const [flashcards, setFlashcards] = useState(SAMPLE_FLASHCARDS)
 return (
   <FlashcardList flashcards={flashcards} />
@@ -50,3 +41,13 @@ const SAMPLE_FLASHCARDS = [
     ]
   },
 ]
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ededed'
+  },
+});
+
+export default App;
+

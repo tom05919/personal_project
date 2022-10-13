@@ -50,17 +50,25 @@ const TimerScreen = () => {
   let hours = Math.floor(remaindSec / 60 / 60)
   let minutes = Math.floor(remaindSec / 60 - hours * 60)
   let seconds = Math.floor(remaindSec % 60)
+  let restSec = Math.floor(remaindSec * 0.2)
+  let restHours = Math.floor(restSec / 60 / 60)
+  let restMinutes = Math.floor(restSec / 60 - hours * 60)
+  let restSeconds = Math.floor(restSec % 60)
 
   return{
     hours,
     minutes,
-    seconds
+    seconds,
+    restHours,
+    restMinutes,
+    restSeconds
   }
   };
 
   return (
     <View style={styles.container}>
       <Text>{timeDisplay().hours} hours {timeDisplay().minutes} minutes {timeDisplay().seconds} seconds</Text>
+      <Text>{timeDisplay().restHours} hours {timeDisplay().restMinutes} minutes {timeDisplay().restSeconds} seconds</Text>
       <TouchableOpacity 
         style={styles.button}
         onPress={() => setTimerOn((current) => !current)}
