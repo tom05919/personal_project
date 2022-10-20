@@ -2,15 +2,13 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { Card, Title } from 'react-native-paper'
 
-/**
- * @param {Props}
- */
+//@param {Props}
 
-type Props = {
-    title: string;
-};
+// type Props = {
+//     title: string;
+// };
 
-const Flipcard = React.FC<Props> = ({title}) => {
+const Flipcard = (props) => {
     return <Card>
         <Card.Content>
             <Title>{title}</Title>
