@@ -8,11 +8,11 @@ import SignUpScreen from './screens/SignUpScreen';
 import HomeScreen from './screens/HomeScreen';
 import CalendarScreen from './screens/CalendarScreen';
 import TimerScreen from './screens/TimerScreen';
-import FlashcardScreen from './screens/FlashcardScreen';
 import homeIcon from '../assets/images/homeIcon.png';
 import calendarIcon from '../assets/images/calendarIcon.png';
 import timerIcon from '../assets/images/timerIcon.png';
 import GameScreen from './screens/GameScreen';
+import CreateScreen from './screens/Quiz/CreateScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -21,7 +21,7 @@ const Home = () => {
   return(
     <Tab.Navigator>
       <Tab.Screen 
-        name='Home' 
+        name='HomeScreen' 
         component={HomeScreen}
         options={{
           tabBarIcon: () => (<Image source={homeIcon} style={styles.icon}/>)
@@ -41,6 +41,14 @@ const Home = () => {
           tabBarIcon: () => (<Image source={timerIcon} style={styles.icon}/>)
         }}
       />
+      <Tab.Screen 
+        name='Quiz' 
+        component={CreateScreen}
+        options={{
+          tabBarIcon: () => (<Image source={timerIcon} style={styles.icon}/>)
+        }}
+      />
+    </Tab.Navigator>
   );
 }
 
