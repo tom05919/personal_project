@@ -6,16 +6,21 @@ const TimerScreen = () => {
   const [duration, setDuration] = useState();
   const [timer, setTimer] = useState();
   const [remaindSec, setReminadSec] = useState(0);
+  const [remaindBreak, setBreakSec] = useState(0);
   const [timerOn, setTimerOn] = useState(false);
   const [durationHour, setDurationHour] = useState(0);
   const [durationMin, setDurationMin] = useState(0);
   const [durationSec, setDurationSec] = useState(0);
   let temp = ((durationHour*60*60)+(durationMin*60)+(durationSec*1))
-
+  let breakTemp = (((durationHour*60*60)+(durationMin*60)+(durationSec*1))*0.20)
 
   const startTimer = () => {
     setReminadSec(temp)
+    setBreakSec(breakTemp)
+
     console.log(temp)
+    console.log(breakTemp)
+
     BackgroundTimer.runBackgroundTimer(() => { 
       setReminadSec(sec => {
         if (sec > 0) {
@@ -24,8 +29,16 @@ const TimerScreen = () => {
           return(0)
         }
       });
-    }, 1000);
-  }
+
+      setBreakSec(breakSec => {
+        if (setReminadSec(sec) == 0 && breakSec > 0) {
+          return(breakSec - 1)
+        } else {
+          return(0)
+        }
+        });
+      })
+    }, 1000);;
 
   useEffect(() => {
     if (timerOn) {
@@ -40,28 +53,31 @@ const TimerScreen = () => {
   }, [timerOn]);
 
   useState(() => {
-    if (remaindSec === 0) {
+    if (remaindSec === 0 || remaindBreak ===0) {
       setTimerOn(false);
       BackgroundTimer.stopBackgroundTimer();
     }
   },[remaindSec]);
 
   const timeDisplay = () => {
-  let hours = Math.floor(remaindSec / 60 / 60)
-  let minutes = Math.floor(remaindSec / 60 - hours * 60)
-  let seconds = Math.floor(remaindSec % 60)
-  let restSec = Math.floor(remaindSec * 0.2)
-  let restHours = Math.floor(restSec / 60 / 60)
-  let restMinutes = Math.floor(restSec / 60 - hours * 60)
-  let restSeconds = Math.floor(restSec % 60)
-
-  return{
-    hours,
-    minutes,
-    seconds,
-    restHours,
-    restMinutes,
-    restSeconds
+  if (remaindSec > 0) {
+    let hours = Math.floor(remaindSec / 60 / 60)
+    let minutes = Math.floor(remaindSec / 60 - hours * 60)
+    let seconds = Math.floor(remaindSec % 60)
+    return{
+      hours,
+      minutes,
+      seconds,
+    }
+  } else {
+    let restHours = Math.floor(breakTemp / 60 / 60)
+    let restMinutes = Math.floor(breakTemp / 60 - restHours * 60)
+    let restSeconds = Math.floor(breakTemp % 60)
+    return{
+      restHours,
+      restMinutes,
+      restSeconds,
+    }
   }
   };
 
