@@ -37,9 +37,9 @@ const TimerScreen = () => {
           return(0)
         }
         });
-      }), 1000;
-  }  
-  
+      }, 1000);
+    }
+
   useEffect(() => {
     if (timerOn) {
       startTimer();

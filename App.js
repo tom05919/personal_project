@@ -4,9 +4,9 @@ import Navigation from './src/navigation';
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Navigation />
-    </SafeAreaView>
+    </View>
   );
 };
 
