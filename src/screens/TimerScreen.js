@@ -31,15 +31,15 @@ const TimerScreen = () => {
       });
 
       setBreakSec(breakSec => {
-        if (setReminadSec(sec) == 0 && breakSec > 0) {
+        if (breakSec > 0) {
           return(breakSec - 1)
         } else {
           return(0)
         }
         });
-      })
-    }, 1000);;
-
+      }), 1000;
+  }  
+  
   useEffect(() => {
     if (timerOn) {
       startTimer();
@@ -53,7 +53,7 @@ const TimerScreen = () => {
   }, [timerOn]);
 
   useState(() => {
-    if (remaindSec === 0 || remaindBreak ===0) {
+    if (remaindSec === 0 || remaindBreak === 0) {
       setTimerOn(false);
       BackgroundTimer.stopBackgroundTimer();
     }
