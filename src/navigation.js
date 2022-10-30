@@ -12,7 +12,8 @@ import homeIcon from '../assets/images/homeIcon.png';
 import calendarIcon from '../assets/images/calendarIcon.png';
 import timerIcon from '../assets/images/timerIcon.png';
 import GameScreen from './screens/GameScreen';
-import CreateScreen from './screens/Quiz/CreateScreen';
+import QuizScreen from './screens/QuizScreen';
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -27,13 +28,13 @@ const Home = () => {
           tabBarIcon: () => (<Image source={homeIcon} style={styles.icon}/>)
         }}
       />
-      <Tab.Screen 
+      {/* <Tab.Screen 
         name='Calendar' 
         component={CalendarScreen}
         options={{
           tabBarIcon: () => (<Image source={calendarIcon} style={styles.icon}/>)
         }}
-      />
+      /> */}
       <Tab.Screen 
         name='Timer' 
         component={TimerScreen}
@@ -43,7 +44,7 @@ const Home = () => {
       />
       <Tab.Screen 
         name='Quiz' 
-        component={CreateScreen}
+        component={QuizScreen}
         options={{
           tabBarIcon: () => (<Image source={timerIcon} style={styles.icon}/>)
         }}
