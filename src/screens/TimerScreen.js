@@ -31,9 +31,12 @@ const TimerScreen = () => {
       });
 
       setBreakSec(breakSec => {
-        if (breakSec > 0) {
+        if (breakSec > 0) 
+        {
           return(breakSec - 1)
-        } else {
+        } 
+        else 
+        {
           return(0)
         }
         });
@@ -69,7 +72,7 @@ const TimerScreen = () => {
       minutes,
       seconds,
     }
-  } else {
+  } if (remaindSec <= 0) {
     let restHours = Math.floor(breakTemp / 60 / 60)
     let restMinutes = Math.floor(breakTemp / 60 - restHours * 60)
     let restSeconds = Math.floor(breakTemp % 60)
@@ -84,7 +87,7 @@ const TimerScreen = () => {
   return (
     <View style={styles.container}>
       <Text>{timeDisplay().hours} hours {timeDisplay().minutes} minutes {timeDisplay().seconds} seconds</Text>
-      <Text>{timeDisplay().restHours} hours {timeDisplay().restMinutes} minutes {timeDisplay().restSeconds} seconds</Text>
+      <Text>{timeDisplay().restHours} hours {timeDisplay().restMinutes} minutes {timeDisplay().restSeconds} seconds of break</Text>
       <TouchableOpacity 
         style={styles.button}
         onPress={() => setTimerOn((current) => !current)}
@@ -120,7 +123,6 @@ const TimerScreen = () => {
     </View>
   )
 }
-
 
 const styles = StyleSheet.create({
   container: {

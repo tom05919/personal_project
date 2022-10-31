@@ -1,7 +1,7 @@
 
 
 import React, { useState } from 'react'
-import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal, Animated } from 'react-native'
+import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal, Animated, StyleSheet } from 'react-native'
 import { COLORS, SIZES } from './colorTheme'
 import data from './data';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -67,23 +67,15 @@ const QuizScreen = () => {
 
     const renderQuestion = () => {
         return (
-            <View style={{
-                marginVertical: 40
-            }}>
+            <View style={styles.marginverticall}>
                 {/* Question Counter */}
-                <View style={{
-                    flexDirection: 'row',
-                    alignItems: 'flex-end'
-                }}>
-                    <Text style={{color: COLORS.white, fontSize: 20, opacity: 0.6, marginRight: 2}}>{currentQuestionIndex+1}</Text>
-                    <Text style={{color: COLORS.white, fontSize: 18, opacity: 0.6}}>/ {allQuestions.length}</Text>
+                <View style={styles.questioncountgood}>
+                    <Text style={styles.questioncount1}>{currentQuestionIndex+1}</Text>
+                    <Text style={styles.questioncount2}>/ {allQuestions.length}</Text>
                 </View>
 
                 {/* Question */}
-                <Text style={{
-                    color: COLORS.white,
-                    fontSize: 30
-                }}>{allQuestions[currentQuestionIndex]?.question}</Text>
+                <Text style={styles.quesitonfont}>{allQuestions[currentQuestionIndex]?.question}</Text>
             </View>
         )
     }
@@ -116,31 +108,17 @@ const QuizScreen = () => {
                             marginVertical: 10
                         }}
                         >
-                            <Text style={{fontSize: 20, color: COLORS.white}}>{option}</Text>
+                            <Text style={styles.test321}>{option}</Text>
 
                             {/* Show Check Or Cross Icon based on correct answer*/}
                             {
                                 option==correctOption ? (
-                                    <View style={{
-                                        width: 30, height: 30, borderRadius: 30/2,
-                                        backgroundColor: COLORS.success,
-                                        justifyContent: 'center', alignItems: 'center'
-                                    }}>
-                                        <MaterialCommunityIcons name="check" style={{
-                                            color: COLORS.white,
-                                            fontSize: 20
-                                        }} />
+                                    <View style={styles.correctops}>
+                                        <MaterialCommunityIcons name="check" style={styles.checkmatcom} />
                                     </View>
                                 ): option == currentOptionSelected ? (
-                                    <View style={{
-                                        width: 30, height: 30, borderRadius: 30/2,
-                                        backgroundColor: COLORS.error,
-                                        justifyContent: 'center', alignItems: 'center'
-                                    }}>
-                                        <MaterialCommunityIcons name="close" style={{
-                                            color: COLORS.white,
-                                            fontSize: 20
-                                        }} />
+                                    <View style={styles.optionsel}>
+                                        <MaterialCommunityIcons name="close" style={styles.matcomicon} />
                                     </View>
                                 ) : null
                             }
@@ -156,10 +134,8 @@ const QuizScreen = () => {
             return (
                 <TouchableOpacity
                 onPress={handleNext}
-                style={{
-                    marginTop: 20, width: '100%', backgroundColor: COLORS.accent, padding: 20, borderRadius: 5
-                }}>
-                    <Text style={{fontSize: 20, color: COLORS.white, textAlign: 'center'}}>Next</Text>
+                style={styles.touchopaznext}>
+                    <Text style={styles.touchopaz}>Next</Text>
                 </TouchableOpacity>
             )
         }else{
@@ -175,18 +151,8 @@ const QuizScreen = () => {
     })
     const renderProgressBar = () => {
         return (
-            <View style={{
-                width: '100%',
-                height: 20,
-                borderRadius: 20,
-                backgroundColor: '#00000020',
-
-            }}>
-                <Animated.View style={[{
-                    height: 20,
-                    borderRadius: 20,
-                    backgroundColor: COLORS.accent
-                },{
+            <View style={styles.barprogresssss}>
+                <Animated.View style={[styles.animatedviewss,{
                     width: progressAnim
                 }]}>
 
@@ -198,17 +164,9 @@ const QuizScreen = () => {
 
 
     return (
-       <SafeAreaView style={{
-           flex: 1
-       }}>
+       <SafeAreaView style={styles.literallyflex1}>
            <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
-           <View style={{
-               flex: 1,
-               paddingVertical: 40,
-               paddingHorizontal: 16,
-               backgroundColor: COLORS.background,
-               position:'relative'
-           }}>
+           <View style={styles.backcolor}>
 
                {/* ProgressBar */}
                { renderProgressBar() }
@@ -228,45 +186,22 @@ const QuizScreen = () => {
                transparent={true}
                visible={showScoreModal}
                >
-                   <View style={{
-                       flex: 1,
-                       backgroundColor: COLORS.primary,
-                       alignItems: 'center',
-                       justifyContent: 'center'
-                   }}>
-                       <View style={{
-                           backgroundColor: COLORS.white,
-                           width: '90%',
-                           borderRadius: 20,
-                           padding: 20,
-                           alignItems: 'center'
-                       }}>
-                           <Text style={{fontSize: 30, fontWeight: 'bold'}}>{ score> (allQuestions.length/2) ? 'Congratulations!' : 'Oops!' }</Text>
+                   <View style={styles.centeredscrmod}>
+                       <View style={styles.widthandscormod}>
+                           <Text style={styles.test123}>{ score> (allQuestions.length/2) ? 'Congratulations!' : 'Oops!' }</Text>
 
-                           <View style={{
-                               flexDirection: 'row',
-                               justifyContent: 'flex-start',
-                               alignItems: 'center',
-                               marginVertical: 20
-                           }}>
+                           <View style={styles.scrmodfont}>
                                <Text style={{
                                    fontSize: 30,
                                    color: score> (allQuestions.length/2) ? COLORS.success : COLORS.error
                                }}>{score}</Text>
-                                <Text style={{
-                                    fontSize: 20, color: COLORS.black
-                                }}>/ { allQuestions.length }</Text>
+                                <Text style={styles.scoreblackcolor}>/ { allQuestions.length }</Text>
                            </View>
                            {/* Retry Quiz button */}
                            <TouchableOpacity
                            onPress={restartQuiz}
-                           style={{
-                               backgroundColor: COLORS.accent,
-                               padding: 20, width: '100%', borderRadius: 20
-                           }}>
-                               <Text style={{
-                                   textAlign: 'center', color: COLORS.white, fontSize: 20
-                               }}>Retry Quiz</Text>
+                           style={styles.restartquizboarder}>
+                               <Text style={styles.retryquizfont}>Retry Quiz</Text>
                            </TouchableOpacity>
 
                        </View>
@@ -277,16 +212,7 @@ const QuizScreen = () => {
                {/* Background Image */}
                <Image
                 source={'.../assets/images/dots.png'}
-                style={{
-                    width: SIZES.width,
-                    height: 130,
-                    zIndex: -1,
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    opacity: 0.5
-                }}
+                style={styles.end}
                 resizeMode={'contain'}
                 />
 
@@ -294,5 +220,118 @@ const QuizScreen = () => {
        </SafeAreaView>
     )
 }
+const styles = StyleSheet.create({
+    container: {
+      alignItems: 'center',
+      padding: 20,
+    },
+    marginverticall: {
+            marginVertical: 40
+    },
+    questioncountgood: {
+            flexDirection: 'row',
+            alignItems: 'flex-end'
+    },
+    questioncount1: {
+            color: COLORS.white, fontSize: 20, opacity: 0.6, marginRight: 2
+    },
+    questioncount2: {
+            color: COLORS.white, fontSize: 18, opacity: 0.6
+    },
+    quesitonfont: {
+            color: COLORS.white,
+            fontSize: 30
+    },
+    test321: {
+            fontSize: 20, color: COLORS.white
+    },
+    correctops: {
+            color: COLORS.white,
+            fontSize: 20
+    },
+    checkmatcom: {
+            color: COLORS.white,
+            fontSize: 20
+    },
+    optionsel: {
+            width: 30, height: 30, borderRadius: 30/2,
+            backgroundColor: COLORS.error,
+            justifyContent: 'center', alignItems: 'center'
+    },
+    matcomicon: {
+            color: COLORS.white,
+            fontSize: 20
+    },
+    touchopaznext: {
+            marginTop: 20, width: '100%', backgroundColor: COLORS.accent, padding: 20, borderRadius: 5
+    },
+    touchopaz: {
+            fontSize: 20, color: COLORS.white, textAlign: 'center'
+    },
+    barprogresssss: {
+            width: '100%',
+            height: 20,
+            borderRadius: 20,
+            backgroundColor: '#00000020',
+    },
+    animatedviewss: {
+            height: 20,
+            borderRadius: 20,
+            backgroundColor: COLORS.accent
+    },
+    literallyflex1: {
+            flex: 1
+    },
+    backcolor: {
+            flex: 1,
+            paddingVertical: 40,
+            paddingHorizontal: 16,
+            backgroundColor: COLORS.background,
+            position:'relative'
+    },
+    test123: {
+        fontSize: 30, fontWeight: 'bold'
+    },
+    centeredscrmod: {
+            flex: 1,
+            backgroundColor: COLORS.primary,
+            alignItems: 'center',
+            justifyContent: 'center'
+    },
+    widthandscormod: {
+            backgroundColor: COLORS.white,
+            width: '90%',
+            borderRadius: 20,
+            padding: 20,
+            alignItems: 'center'
+    },
+    scrmodfont: {
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            marginVertical: 20
+    },
+    scoreblackcolor: {
+            fontSize: 20, color: COLORS.black
+    },
+    restartquizboarder: {
+            backgroundColor: COLORS.accent,
+            padding: 20, width: '100%', borderRadius: 20
+    },
+    retryquizfont: {
+            textAlign: 'center', color: COLORS.white, fontSize: 20
+    },
+    end: {
+            width: SIZES.width,
+            height: 130,
+            zIndex: -1,
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            opacity: 0.5
+    },
 
+  })
+  
 export default QuizScreen
