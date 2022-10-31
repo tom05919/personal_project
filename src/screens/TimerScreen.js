@@ -30,16 +30,16 @@ const TimerScreen = () => {
         }
       });
 
-      setBreakSec(breakSec => {
-        if (breakSec > 0) 
-        {
-          return(breakSec - 1)
-        } 
-        else 
-        {
-          return(0)
-        }
-        });
+  //  setBreakSec(sec => {
+  //    if (sec > 0) 
+  //    {
+  //      return(sec - 1)
+  //    } 
+  //    else 
+  //    {
+  //      return(0)
+  //    }
+  //    });
       }, 1000);
     }
 
@@ -86,8 +86,8 @@ const TimerScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text>{timeDisplay().hours} hours {timeDisplay().minutes} minutes {timeDisplay().seconds} seconds</Text>
-      <Text>{timeDisplay().restHours} hours {timeDisplay().restMinutes} minutes {timeDisplay().restSeconds} seconds of break</Text>
+      <Text> Study Time: {timeDisplay().hours} hours {timeDisplay().minutes} minutes {timeDisplay().seconds} seconds</Text>
+      <Text> Break Time: {timeDisplay().restHours} hours {timeDisplay().restMinutes} minutes {timeDisplay().restSeconds} seconds</Text>
       <TouchableOpacity 
         style={styles.button}
         onPress={() => setTimerOn((current) => !current)}
