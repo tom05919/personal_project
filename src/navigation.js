@@ -6,13 +6,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import HomeScreen from './screens/HomeScreen';
-import CalendarScreen from './screens/CalendarScreen';
 import TimerScreen from './screens/TimerScreen';
 import homeIcon from '../assets/images/homeIcon.png';
-import calendarIcon from '../assets/images/calendarIcon.png';
 import timerIcon from '../assets/images/timerIcon.png';
-import GameScreen from './screens/GameScreen';
-import QuizScreen from './screens/QuizScreen';
+import QuizScreen from './screens/Quiz/QuizScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -28,13 +25,6 @@ const Home = () => {
           tabBarIcon: () => (<Image source={homeIcon} style={styles.icon}/>)
         }}
       />
-      {/* <Tab.Screen 
-        name='Calendar' 
-        component={CalendarScreen}
-        options={{
-          tabBarIcon: () => (<Image source={calendarIcon} style={styles.icon}/>)
-        }}
-      /> */}
       <Tab.Screen 
         name='Timer' 
         component={TimerScreen}
