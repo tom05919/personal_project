@@ -5,9 +5,9 @@ import CustomButton from '../../components/CustomButton'
 
 let questions = [
     {
-        question: 'What is the captial of Louisiana',
+        question: 'What is the capital of Louisiana',
         options: ["Baton Rouge", "New Orelans", "Shreveport", "Alexandria"],
-        correct_option: "Baten Rouge"
+        correct_option: "Baton Rouge"
     },
     {
         question: "What color do you get when you mix red and blue",
@@ -46,14 +46,10 @@ const Data = () => {
         setOptionList([...optionList, optionFour]);
         setOptionFour(null);
 
-        console.log(question)
-        console.log(answer)
-        console.log(optionList)
-
         questions.push({
-            question: "What's 1 + 1",
-            options: ["0","1","2","3"],
-            correct_option: "2"
+            question: question,
+            options: optionList,
+            correct_option: answer
         }) 
         setQuestion(null);
         setAnswer(null);
@@ -122,37 +118,3 @@ const styles = StyleSheet.create({
 export { questions };
 
 export default Data;
-
-
-// export default data = [
-//     {
-//         question: "What’s the biggest planet in our solar system?",
-//         options: ["Jupiter","Saturn","Neptune","Mercury"],
-//         correct_option: "Jupiter"
-//     },
-//     {
-//         question: "What attraction in India is one of the famus in the world?",
-//         options: ["Chand Minar","Taj Mahal","Stadium"],
-//         correct_option: "Taj Mahal"
-//     },
-//     {
-//         question: "What land animal can open its mouth the widest?",
-//         options: ["Alligator","Crocodile","Baboon","Hippo"],
-//         correct_option: "Hippo"
-//     },
-//     {
-//         question: "What is the largest animal on Earth?",
-//         options: ["The African elephant","The blue whale","The sperm whale","The giant squid"],
-//         correct_option: "The blue whale"
-//     },
-//     {
-//         question: "What is the only flying mammal?",
-//         options: ["The bat","The flying squirrel","The bald eagle","The colugo"],
-//         correct_option: "The bat"
-//     },
-//     {
-//         question: "What is 1+1?",
-//         options: ["1","2","3","4"],
-//         correct_option: "2"
-//     }
-// ]
