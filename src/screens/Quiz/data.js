@@ -3,9 +3,31 @@ import React, { useState } from 'react'
 import CustomInput from '../../components/CustomInput'
 import CustomButton from '../../components/CustomButton'
 
-let questions = [];
+let questions = [
+    {
+        question: 'What is the captial of Louisiana',
+        options: ["Baton Rouge", "New Orelans", "Shreveport", "Alexandria"],
+        correct_option: "Baten Rouge"
+    },
+    {
+        question: "What color do you get when you mix red and blue",
+        options: ["yellow", "orange", "green", "purple"],
+        correct_option: "purple"
+    },
+    {
+        question: "What's the square root of 64",
+        options: ["5", "6", "7", "8"],
+        correct_option: "8"
+    },
+    {
+        question: "What year did America gain its independence",
+        options: ["1775", "1776", "1777", "1778"],
+        correct_option: "1776"
+    }
 
-export default data = () => {
+];
+
+const Data = () => {
     const [question, setQuestion] = useState('')
     const [optionOne, setOptionOne] = useState('')
     const [optionTwo, setOptionTwo] = useState('')
@@ -15,27 +37,23 @@ export default data = () => {
     const [answer, setAnswer] = useState()
 
     const makeQuestions = () => {
-        Keyboard.dismiss();
         setOptionList([...optionList, optionOne]);
         setOptionOne(null);
-        Keyboard.dismiss();
         setOptionList([...optionList, optionTwo]);
         setOptionTwo(null);
-        Keyboard.dismiss();
         setOptionList([...optionList, optionThree]);
         setOptionThree(null);
-        Keyboard.dismiss();
         setOptionList([...optionList, optionFour]);
         setOptionFour(null);
-        
+
         console.log(question)
         console.log(answer)
         console.log(optionList)
 
         questions.push({
-            question: question,
-            options: optionList,
-            correct_option: answer
+            question: "What's 1 + 1",
+            options: ["0","1","2","3"],
+            correct_option: "2"
         }) 
         setQuestion(null);
         setAnswer(null);
@@ -103,6 +121,7 @@ const styles = StyleSheet.create({
 
 export { questions };
 
+export default Data;
 
 
 // export default data = [

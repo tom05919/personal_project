@@ -10,7 +10,9 @@ import TimerScreen from './screens/TimerScreen';
 import homeIcon from '../assets/images/homeIcon.png';
 import timerIcon from '../assets/images/timerIcon.png';
 import QuizScreen from './screens/Quiz/QuizScreen';
-import data from './screens/Quiz/data';
+import data from './screens/Quiz/Data';
+import Quiz from '../assets/images/Quiz.png';
+import Question from '../assets/images/Questions.png';
 
 
 const Stack = createNativeStackNavigator();
@@ -37,14 +39,14 @@ const Home = () => {
         name='Quiz' 
         component={QuizScreen}
         options={{
-          tabBarIcon: () => (<Image source={timerIcon} style={styles.icon}/>)
+          tabBarIcon: () => (<Image source={Quiz} style={styles.icon}/>)
         }}
       />
       <Tab.Screen 
-        name='data' 
+        name='Questions' 
         component={data}
         options={{
-          tabBarIcon: () => (<Image source={timerIcon} style={styles.icon}/>)
+          tabBarIcon: () => (<Image source={Question} style={styles.icon}/>)
         }}
       />
     </Tab.Navigator>

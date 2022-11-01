@@ -41,7 +41,6 @@ const HomeScreen = () => {
             })
           }
         </View>      
-        {/* <CustomButton text='Logout' onPress={signOut}/> */}
       </ScrollView>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -59,7 +58,6 @@ const HomeScreen = () => {
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
-      {/* <CustomButton text='Logout' onPress={signOut}/> */}
     </View>
   
   )

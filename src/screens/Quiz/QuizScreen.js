@@ -3,8 +3,10 @@
 import React, { useState } from 'react'
 import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal, Animated, StyleSheet, RefreshControl } from 'react-native'
 import { COLORS, SIZES } from './colorTheme'
-import { questions } from './data';
+import { questions } from './Data';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Correct from '../../../assets/images/correct.png'
+import Wrong from '../../../assets/images/wrong.png'
 
 
 const QuizScreen = () => {
@@ -111,11 +113,11 @@ const QuizScreen = () => {
                             {
                                 option==correctOption ? (
                                     <View style={styles.correctContainer}>
-                                        <MaterialCommunityIcons name="check" style={styles.checkIcon} />
+                                        <Image source={Correct} style={styles.checkIcon} />
                                     </View>
                                 ): option == currentSelectedOption ? (
                                     <View style={styles.wrongContainer}>
-                                        <MaterialCommunityIcons name="close" style={styles.closeIcon} />
+                                        <Image source={Wrong} style={styles.closeIcon} />
                                     </View>
                                 ) : null
                             }
