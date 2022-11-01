@@ -1,15 +1,17 @@
-import { View, Text } from 'react-native'
+import { View, Text , StyleSheet , TouchableOpacity , TextInput , KeyboardAvoidingView } from 'react-native'
 import React, { useState } from 'react'
 import CustomInput from '../../components/CustomInput'
+import CustomButton from '../../components/CustomButton'
 
 const data = () => {
     const [numQuestion, setNumQuestion] = useState(0)
-    const [question, setQUestion] = useState("")
-    const [options, setOptions] = useState([])
+    const [question, setQuestion] = useState('')
+    const [options, setOptions] = useState('')
+    const [optionList, setOptionList] = useState([])
     const [answer, setAnswer] = useState()
     let data = [];
 
-    const makeQuestions= () => {
+    const makeQuestions = () => {
         for (var i = 0; i < numQuestion; i++) {
             data.push({
                 question: question,
@@ -19,13 +21,82 @@ const data = () => {
         }
     }
 
+    const setChoiceOne = () => {
+
+    }
+
+    const setChoiceTwo = () => {
+        
+    }
+
+    const setChoiceThree = () => {
+        
+    }
+
+    const setChoiceFour = () => {
+        
+    }
+
     return (
-        <View>
-            <Text>data</Text>
+        <View style={styles.container}>
+            <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={styles.writeTaskContainer}
+            >
+                <CustomInput
+                    placeholder={"Enter Question"}
+                    value={question}
+                    setValue={setQuestion}
+                />
+                <View>
+                    <CustomInput
+                        placeholder={"Enter choice 1"}
+                        value={options}
+                        setValue={setOptions}
+                    />
+                    <CustomButton
+                        onPress={setChoiceOne}
+                    />
+                    <CustomInput
+                        placeholder={"Enter choice 2"}
+                        value={options}
+                        setValue={setOptions}
+                    />
+                    <CustomButton
+                        onPress={setChoiceTwo}
+                    />
+                    <CustomInput
+                        placeholder={"Enter choice 3"}
+                        value={options}
+                        setValue={setOptions}
+                    />
+                    <CustomButton
+                        onPress={setChoiceThree}
+                    />
+                    <CustomInput
+                        placeholder={"Enter choice 4"}
+                        value={question}
+                        setValue={setOptions}
+                    />
+                    <CustomButton
+                        onPress={setChoiceFour}
+                    />
+                </View>
+                <CustomInput
+                    placeholder={"Enter Question"}
+                    value={question}
+                    setValue={setQuestion}
+                />
+            </KeyboardAvoidingView>
         </View>
     )
 }
 
+const styles = StyleSheet.create({
+
+})
+
+export default data;
 
 
 // export default data = [
