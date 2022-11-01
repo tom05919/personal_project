@@ -1,7 +1,7 @@
 
 
 import React, { useState } from 'react'
-import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal, Animated, StyleSheet } from 'react-native'
+import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal, Animated, StyleSheet, RefreshControl } from 'react-native'
 import { COLORS, SIZES } from './colorTheme'
 import { questions } from './data';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -17,6 +17,12 @@ const QuizScreen = () => {
     const [score, setScore] = useState(0)
     const [showNextButton, setShowNextButton] = useState(false)
     const [showScoreModal, setShowScoreModal] = useState(false)
+    const [refreshing, setRefreshing] = React.useState(false);
+
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        wait(1000).then(() => setRefreshing(false));
+    }, []);
 
     const validateAnswer = (selectedOption) => {
         let correct_option = allQuestions[currentQuestionNumber]['correct_option'];
@@ -155,7 +161,15 @@ const QuizScreen = () => {
     return (
        <SafeAreaView style={styles.renderContainer}>
            <StatusBar barStyle="light-content" backgroundColor={COLORS.primary} />
-           <View style={styles.backColor}>
+           <View 
+           style={styles.backColor}
+           refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+            />
+          }
+           >
                {renderProgressBar()}
                {renderQuestion()}
                {renderOptions()}

@@ -5,7 +5,7 @@ import CustomButton from '../../components/CustomButton'
 
 let questions = [];
 
-const data = () => {
+export default data = () => {
     const [question, setQuestion] = useState('')
     const [optionOne, setOptionOne] = useState('')
     const [optionTwo, setOptionTwo] = useState('')
@@ -15,31 +15,35 @@ const data = () => {
     const [answer, setAnswer] = useState()
 
     const makeQuestions = () => {
-        if (optionOne) {
-            Keyboard.dismiss();
-            setOptionList([...optionList, optionOne]);
-            setOptionOne(null);
-        }
-        if (optionTwo) {
-            Keyboard.dismiss();
-            setOptionList([...optionList, optionTwo]);
-            setOptionTwo(null);
-        }
-        if (optionThree) {
-            Keyboard.dismiss();
-            setOptionList([...optionList, optionThree]);
-            setOptionThree(null);
-        }
-        if (optionFour) {
-            Keyboard.dismiss();
-            setOptionList([...optionList, optionFour]);
-            setOptionFour(null);
-        }
+        Keyboard.dismiss();
+        setOptionList([...optionList, optionOne]);
+        setOptionOne(null);
+        Keyboard.dismiss();
+        setOptionList([...optionList, optionTwo]);
+        setOptionTwo(null);
+        Keyboard.dismiss();
+        setOptionList([...optionList, optionThree]);
+        setOptionThree(null);
+        Keyboard.dismiss();
+        setOptionList([...optionList, optionFour]);
+        setOptionFour(null);
+        
+        console.log(question)
+        console.log(answer)
+        console.log(optionList)
+
         questions.push({
             question: question,
             options: optionList,
             correct_option: answer
         }) 
+        setQuestion(null);
+        setAnswer(null);
+        setOptionList([]);
+    }
+
+    const resetQuestions = () => {
+        questions = [];
     }
 
     return (
@@ -84,6 +88,10 @@ const data = () => {
                     text={'Add'}
                     onPress={makeQuestions}
                 />
+                <CustomButton
+                    text={'Reset questions'}
+                    onPress={resetQuestions}
+                />
             </KeyboardAvoidingView>
         </View>
     )
@@ -94,8 +102,6 @@ const styles = StyleSheet.create({
 })
 
 export { questions };
-
-export default data;
 
 
 
