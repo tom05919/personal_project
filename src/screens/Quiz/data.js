@@ -1,5 +1,6 @@
 import { View, Text } from 'react-native'
 import React, { useState } from 'react'
+import CustomInput from '../../components/CustomInput'
 
 const data = () => {
     const [numQuestion, setNumQuestion] = useState(0)
@@ -7,12 +8,13 @@ const data = () => {
     const [options, setOptions] = useState([])
     const [answer, setAnswer] = useState()
     let data = [];
+
     const makeQuestions= () => {
         for (var i = 0; i < numQuestion; i++) {
             data.push({
-                question:"",
-                options:"",
-                correct_option:""
+                question: question,
+                options: options,
+                correct_option: answer
             }) 
         }
     }
