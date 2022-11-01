@@ -16,10 +16,8 @@ const TimerScreen = () => {
 
   const startTimer = () => {
     setReminadSec(temp)
-    setBreakSec(breakTemp)
 
     console.log(temp)
-    console.log(breakTemp)
 
     BackgroundTimer.runBackgroundTimer(() => { 
       setReminadSec(sec => {
@@ -29,17 +27,6 @@ const TimerScreen = () => {
           return(0)
         }
       });
-
-  //  setBreakSec(sec => {
-  //    if (sec > 0) 
-  //    {
-  //      return(sec - 1)
-  //    } 
-  //    else 
-  //    {
-  //      return(0)
-  //    }
-  //    });
       }, 1000);
     }
 
@@ -56,7 +43,7 @@ const TimerScreen = () => {
   }, [timerOn]);
 
   useState(() => {
-    if (remaindSec === 0 || remaindBreak === 0) {
+    if (remaindSec === 0) {
       setTimerOn(false);
       BackgroundTimer.stopBackgroundTimer();
     }
@@ -87,7 +74,7 @@ const TimerScreen = () => {
   return (
     <View style={styles.container}>
       <Text> Study Time: {timeDisplay().hours} hours {timeDisplay().minutes} minutes {timeDisplay().seconds} seconds</Text>
-      <Text> Break Time: {timeDisplay().restHours} hours {timeDisplay().restMinutes} minutes {timeDisplay().restSeconds} seconds</Text>
+      
       <TouchableOpacity 
         style={styles.button}
         onPress={() => setTimerOn((current) => !current)}
