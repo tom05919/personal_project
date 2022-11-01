@@ -1,40 +1,44 @@
-import { View, Text , StyleSheet , TouchableOpacity , TextInput , KeyboardAvoidingView } from 'react-native'
+import { View, Text , StyleSheet , TouchableOpacity , TextInput , KeyboardAvoidingView, Keyboard } from 'react-native'
 import React, { useState } from 'react'
 import CustomInput from '../../components/CustomInput'
 import CustomButton from '../../components/CustomButton'
 
 const data = () => {
-    const [numQuestion, setNumQuestion] = useState(0)
     const [question, setQuestion] = useState('')
-    const [options, setOptions] = useState('')
+    const [optionOne, setOptionOne] = useState('')
+    const [optionTwo, setOptionTwo] = useState('')
+    const [optionThree, setOptionThree] = useState('')
+    const [optionFour, setOptionFour] = useState('')
     const [optionList, setOptionList] = useState([])
     const [answer, setAnswer] = useState()
-    let data = [];
+    let questions = [];
 
     const makeQuestions = () => {
-        for (var i = 0; i < numQuestion; i++) {
-            data.push({
-                question: question,
-                options: options,
-                correct_option: answer
-            }) 
+        if (optionOne) {
+            Keyboard.dismiss();
+            setOptionList([...optionList, optionOne]);
+            setOptionOne(null);
         }
-    }
-
-    const setChoiceOne = () => {
-
-    }
-
-    const setChoiceTwo = () => {
-        
-    }
-
-    const setChoiceThree = () => {
-        
-    }
-
-    const setChoiceFour = () => {
-        
+        if (optionTwo) {
+            Keyboard.dismiss();
+            setOptionList([...optionList, optionTwo]);
+            setOptionTwo(null);
+        }
+        if (optionThree) {
+            Keyboard.dismiss();
+            setOptionList([...optionList, optionThree]);
+            setOptionThree(null);
+        }
+        if (optionFour) {
+            Keyboard.dismiss();
+            setOptionList([...optionList, optionFour]);
+            setOptionFour(null);
+        }
+        questions.push({
+            question: question,
+            options: optionList,
+            correct_option: answer
+        }) 
     }
 
     return (
@@ -51,41 +55,33 @@ const data = () => {
                 <View>
                     <CustomInput
                         placeholder={"Enter choice 1"}
-                        value={options}
-                        setValue={setOptions}
-                    />
-                    <CustomButton
-                        onPress={setChoiceOne}
+                        value={optionOne}
+                        setValue={setOptionOne}
                     />
                     <CustomInput
                         placeholder={"Enter choice 2"}
-                        value={options}
-                        setValue={setOptions}
-                    />
-                    <CustomButton
-                        onPress={setChoiceTwo}
+                        value={optionTwo}
+                        setValue={setOptionTwo}
                     />
                     <CustomInput
                         placeholder={"Enter choice 3"}
-                        value={options}
-                        setValue={setOptions}
-                    />
-                    <CustomButton
-                        onPress={setChoiceThree}
+                        value={optionThree}
+                        setValue={setOptionThree}
                     />
                     <CustomInput
                         placeholder={"Enter choice 4"}
-                        value={question}
-                        setValue={setOptions}
-                    />
-                    <CustomButton
-                        onPress={setChoiceFour}
+                        value={optionFour}
+                        setValue={setOptionFour}
                     />
                 </View>
                 <CustomInput
-                    placeholder={"Enter Question"}
-                    value={question}
-                    setValue={setQuestion}
+                    placeholder={"Enter correct answer"}
+                    value={answer}
+                    setValue={setAnswer}
+                />
+                <CustomButton
+                    text={'Add'}
+                    onPress={makeQuestions}
                 />
             </KeyboardAvoidingView>
         </View>
@@ -97,6 +93,8 @@ const styles = StyleSheet.create({
 })
 
 export default data;
+
+export { questions };
 
 
 // export default data = [
