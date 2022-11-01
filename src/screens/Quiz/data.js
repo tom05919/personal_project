@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import CustomInput from '../../components/CustomInput'
 import CustomButton from '../../components/CustomButton'
 
+let questions = [];
+
 const data = () => {
     const [question, setQuestion] = useState('')
     const [optionOne, setOptionOne] = useState('')
@@ -11,7 +13,6 @@ const data = () => {
     const [optionFour, setOptionFour] = useState('')
     const [optionList, setOptionList] = useState([])
     const [answer, setAnswer] = useState()
-    let questions = [];
 
     const makeQuestions = () => {
         if (optionOne) {
@@ -92,9 +93,10 @@ const styles = StyleSheet.create({
 
 })
 
+export { questions };
+
 export default data;
 
-export { questions };
 
 
 // export default data = [

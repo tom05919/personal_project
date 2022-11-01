@@ -3,13 +3,13 @@
 import React, { useState } from 'react'
 import { View, Text, SafeAreaView, StatusBar, Image, TouchableOpacity, Modal, Animated, StyleSheet } from 'react-native'
 import { COLORS, SIZES } from './colorTheme'
-import data from './data';
+import { questions } from './data';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 const QuizScreen = () => {
 
-    const allQuestions = data;
+    const allQuestions = questions;
     const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0)
     const [currentSelectedOption, setCurrentSelectedOption] = useState(null);
     const [correctOption, setCorrectOption] = useState(null);
